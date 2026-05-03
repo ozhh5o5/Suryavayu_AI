@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "postinstall": "prisma generate",
-    "build": "prisma generate && prisma migrate deploy && npm run seed && next build",
+    "postinstall": "npx prisma@5 generate",
+    "build": "npx prisma@5 generate && npx prisma@5 migrate deploy && npm run seed && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "seed": "tsx scripts/seed-demo.ts",
-    "generate:plants": "tsx scripts/generate-mock-plants.ts",
-    "generate:timeseries": "tsx scripts/generate-mock-timeseries.ts"
+    "seed": "npx tsx scripts/seed-demo.ts",
+    "generate:plants": "npx tsx scripts/generate-mock-plants.ts",
+    "generate:timeseries": "npx tsx scripts/generate-mock-timeseries.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",

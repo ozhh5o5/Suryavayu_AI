@@ -14,12 +14,6 @@ type PlantMapEntry = {
   district: string;
 };
 
-const iconByStatus: Record<PlantMapEntry["status"], L.DivIcon> = {
-  ACTIVE: L.divIcon({ html: '<div style="background:#16a34a;width:12px;height:12px;border-radius:9999px"></div>' }),
-  MAINTENANCE: L.divIcon({ html: '<div style="background:#d97706;width:12px;height:12px;border-radius:9999px"></div>' }),
-  CURTAILED: L.divIcon({ html: '<div style="background:#ea580c;width:12px;height:12px;border-radius:9999px"></div>' }),
-  OFFLINE: L.divIcon({ html: '<div style="background:#dc2626;width:12px;height:12px;border-radius:9999px"></div>' }),
-};
 const MAP_CENTER: [number, number] = [15.1, 76.4];
 
 export function PlantMap({ plants }: { plants: PlantMapEntry[] }) {
@@ -27,6 +21,13 @@ export function PlantMap({ plants }: { plants: PlantMapEntry[] }) {
   const mapRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
+    // Lazy initialize icons to avoid "window is not defined" at top level
+    const iconByStatus: Record<PlantMapEntry["status"], L.DivIcon> = {
+      ACTIVE: L.divIcon({ html: '<div style="background:#16a34a;width:12px;height:12px;border-radius:9999px"></div>' }),
+      MAINTENANCE: L.divIcon({ html: '<div style="background:#d97706;width:12px;height:12px;border-radius:9999px"></div>' }),
+      CURTAILED: L.divIcon({ html: '<div style="background:#ea580c;width:12px;height:12px;border-radius:9999px"></div>' }),
+      OFFLINE: L.divIcon({ html: '<div style="background:#dc2626;width:12px;height:12px;border-radius:9999px"></div>' }),
+    };
     const container = containerRef.current;
     if (!container) return;
 
