@@ -1,14 +1,14 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const colors = require("tailwindcss/colors");
-const formsPlugin = require("@tailwindcss/forms");
+import colors from "tailwindcss/colors";
+import formsPlugin from "@tailwindcss/forms";
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   darkMode: "class",
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
